@@ -30,3 +30,13 @@
         this->presensi = presensi;
         }
     }
+
+// To determine "what to do" to attribute, use if else function,
+
+    ecample:
+    
+    if (jabatan == "teknisi") gajiPokok = 1800000;
+        else if (jabatan == "rnd") gajiPokok = 2300000;
+        else if (jabatan == "kadiv") gajiPokok = 2700000;
+        else gajiPokok = 0;
+
