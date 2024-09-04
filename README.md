@@ -28,4 +28,5 @@
         this->lembur = lembur;
         this->dinas = dinas;
         this->presensi = presensi;
+        }
     }
