@@ -1,5 +1,5 @@
 // Use header #include to import library
-    example #include <lib name>
+    example #include <libname>
     
     <iostream> library is used to load functions like using namespace std, cin, cout, class etc.
     <string> library is used to define variables like nama & jabatam which using alphabet/word
