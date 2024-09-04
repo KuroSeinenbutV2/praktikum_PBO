@@ -15,3 +15,17 @@
     protected{
         to set attribute of member to be accesed by parent class and derived class
         } 
+
+// to initiate the construct use
+
+    this->(construct name)=(attribute name)
+    example
+    class Karyawan {
+    public:
+    Karyawan(string nama, string jabatan, int lembur, int dinas, int presensi) {
+        this->nama = nama;
+        this->jabatan = jabatan;
+        this->lembur = lembur;
+        this->dinas = dinas;
+        this->presensi = presensi;
+    }
