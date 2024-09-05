@@ -57,7 +57,7 @@ int main() { //Main Function
     cin >> presensi;
 
     Karyawan karyawan(nama, jabatan, lembur, dinas, presensi);  //Make new employees object with data that inputed before
-    karyawan.InfoKaryawan(); //Display the new employees object
+    karyawan.InfoKaryawan(); //Display the new employees object data
 
     return 0;
 }
