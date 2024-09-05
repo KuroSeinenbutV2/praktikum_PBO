@@ -57,7 +57,7 @@ to initiate the construct use:
         }  
 
 //  Encaptulation
-    Encaptulation restricts direct access to class components, this mean it can hide the member of class.
+    <br>Encaptulation restricts direct access to class components, this mean it can hide the member of class.
 
     Example:
     class Karyawan {
