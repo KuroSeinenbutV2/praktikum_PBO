@@ -55,3 +55,17 @@ to initiate the construct use:
     int HitungGaji() {
             return gajiPokok + (lembur * 20000) + (dinas * 400000) + (presensi * 50000);
         }  
+
+//  Encaptulation
+    Encaptulation restricts direct access to class components, this mean it can hide the member of class.
+
+    Example:
+    class Karyawan {
+    private:
+    string nama;
+    string jabatan;
+    int lembur;
+    int dinas;
+    int presensi;
+    int gajiPokok;
+    }
