@@ -2,8 +2,8 @@
 #include <string>
 using namespace std;
 
-class Karyawan {
-private:
+class Karyawan { //Declare Class
+private: //Declare Attribute
     string nama;
     string jabatan;
     int lembur;
@@ -11,8 +11,9 @@ private:
     int presensi;
     int gajiPokok;
 
-public:
-    Karyawan(string nama, string jabatan, int lembur, int dinas, int presensi) {
+public: //Declare Attribute
+    Karyawan(string nama, string jabatan, int lembur, int dinas, int presensi) //Constructor
+    {
         this->nama = nama;
         this->jabatan = jabatan;
         this->lembur = lembur;
@@ -25,11 +26,11 @@ public:
         else gajiPokok = 0;
     }
 
-    int HitungGaji() {
+    int HitungGaji() { //Declare Method to calculate salary
         return gajiPokok + (lembur * 20000) + (dinas * 400000) + (presensi * 50000);
     }
 
-    void InfoKaryawan() {
+    void InfoKaryawan() { //Declare Method to display employees information
     	cout << endl;
         cout << "-----------------------------------" << endl;
 		cout << "Nama karyawan: " << nama << endl;
@@ -40,7 +41,7 @@ public:
     }
 };
 
-int main() {
+int main() { //Main Function
     string nama, jabatan;
     int lembur, dinas, presensi;
 
@@ -55,8 +56,8 @@ int main() {
     cout << "Masukkan Jumlah Presensi: ";
     cin >> presensi;
 
-    Karyawan karyawan(nama, jabatan, lembur, dinas, presensi);    
-    karyawan.InfoKaryawan();
+    Karyawan karyawan(nama, jabatan, lembur, dinas, presensi);  //Make new employees object with data that inputed before
+    karyawan.InfoKaryawan(); //Display the new employees object
 
     return 0;
 }
