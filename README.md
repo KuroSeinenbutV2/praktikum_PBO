@@ -16,7 +16,9 @@
         to set attribute of member to be accesed by parent class and derived class
         } 
 
-// to initiate the construct use
+// Constructor is a special member function of a class that is automatically called when an object of that class is created.
+
+to initiate the construct use:
 
     this->(construct name)=(attribute name)
     example
