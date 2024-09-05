@@ -29,7 +29,15 @@
     int gajiPokok;
     }
 
-// Constructor is a special member function of a class that is automatically called when an object of that class is created.
+//  Object
+    <br>Object are components that created from Class
+
+    Example:
+    {
+        Karyawan karyawan(nama, jabatan, lembur, dinas, presensi);
+    }
+
+//  Constructor is a special member function of a class that is automatically called when an object of that class is created.
 
 to initiate the construct use:
 
@@ -46,7 +54,7 @@ to initiate the construct use:
         }
     }
 
-// To determine "what to do" to attribute, use if else function,
+//  To determine "what to do" to attribute, use if else function,
 
     ecample:
     
