@@ -33,7 +33,7 @@ public: //Declare Attribute
     void InfoKaryawan() { //Declare Method to display employees information
     	cout << endl;
         cout << "-----------------------------------" << endl;
-		cout << "Nama karyawan: " << nama << endl;
+        cout << "Nama karyawan: " << nama << endl;
         cout << "Jumlah presensi dalam satu bulan: " << presensi << endl;
         cout << "Jumlah dinas luar: " << dinas << endl;
         cout << "Total gaji: Rp " << HitungGaji() << endl;
