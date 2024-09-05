@@ -40,3 +40,16 @@
         else if (jabatan == "kadiv") gajiPokok = 2700000;
         else gajiPokok = 0;
 
+// To make a Method use 
+    
+    <datatype> <Method name> (parameter){
+
+        //program code
+
+        return <variable name>
+    }
+
+    Example:
+    int HitungGaji() {
+            return gajiPokok + (lembur * 20000) + (dinas * 400000) + (presensi * 50000);
+        }  
