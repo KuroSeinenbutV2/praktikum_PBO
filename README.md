@@ -42,8 +42,10 @@ to initiate the construct use:
         else if (jabatan == "kadiv") gajiPokok = 2700000;
         else gajiPokok = 0;
 
-// To make a Method use 
+//  Method
+    <br> Method is a program function that is defined within a class.
     
+    To make a Method use:
     <datatype> <Method name> (parameter){
 
         //program code
@@ -56,8 +58,8 @@ to initiate the construct use:
             return gajiPokok + (lembur * 20000) + (dinas * 400000) + (presensi * 50000);
         }  
 
-//  Encaptulation
-    <br>Encaptulation restricts direct access to class components, this mean it can hide the member of class.
+//  Encapsulation
+    <br>Encapsulation restricts direct access to class components, this mean it can hide the member of class.
 
     Example:
     class Karyawan {
