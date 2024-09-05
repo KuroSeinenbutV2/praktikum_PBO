@@ -4,17 +4,30 @@
     <iostream> library is used to load functions like using namespace std, cin, cout, class etc.
     <string> library is used to define variables like nama & jabatam which using alphabet/word
 
-// In class there are 3 atribute variables
+// Class
+    <br> Class is a blueprint for creating object.
+    
+    In class there are 3 atribute variables
    
-    public{
+    public:
         to set attribute of member to be accesed by freely
-        }
-    private{
+    
+    private:
         to set attriute of member to be acessed by only parent class
-        }
-    protected{
+        
+    protected:
         to set attribute of member to be accesed by parent class and derived class
-        } 
+
+    Example:
+    class Karyawan {
+    private:
+    string nama;
+    string jabatan;
+    int lembur;
+    int dinas;
+    int presensi;
+    int gajiPokok;
+    }
 
 // Constructor is a special member function of a class that is automatically called when an object of that class is created.
 
