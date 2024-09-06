@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-enum Jabatan { TEKNISI = 1, RND = 2, KADIV = 3 };
+enum Jabatan { TEKNISI = 1, RND = 2, KADIV = 3, NGGANGUR };
 
 class Karyawan { // Declare Class
 private: // Declare Attribute
@@ -26,6 +26,7 @@ public: // Declare Attribute
             case TEKNISI: gajiPokok = 1800000; break;
             case RND: gajiPokok = 2300000; break;
             case KADIV: gajiPokok = 2700000; break;
+            case NGGANGUR: gajiPokok = 0; break;
             default: gajiPokok = 0; break;
         }
     }
@@ -59,7 +60,7 @@ int main() { // Main Function
         case TEKNISI: jabatan = TEKNISI; break;
         case RND: jabatan = RND; break;
         case KADIV: jabatan = KADIV; break;
-        default: jabatan = TEKNISI; // Default to Teknis if invalid input
+        default: jabatan = NGGANGUR;
     }
 
     cout << "Masukkan Jumlah Jam Lembur: ";
