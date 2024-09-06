@@ -1,117 +1,87 @@
 #include <iostream>
-#include <map>
-#include <string>
+#include <vector>
 #include <iomanip>
 
 using namespace std;
 
-// Kelas Menu untuk menyimpan menu makanan dan harga
-class Menu {
-private:
-    map<string, double> foodItems;
-
+class ItemMakanan {
 public:
-    // Menambahkan item ke dalam menu
-    void addItem(const string& itemName, double price) {
-        foodItems[itemName] = price;
-    }
-
-    // Menampilkan menu makanan
-    void displayMenu() const {
-        cout << "Menu Makanan:\n";
-        cout << fixed << setprecision(2); // Menampilkan harga dengan 2 angka desimal
-        for (const auto& item : foodItems) {
-            cout << item.first << " - Rp " << item.second << endl;
-        }
-    }
-
-    // Mengambil harga makanan berdasarkan nama item
-    double getPrice(const string& itemName) const {
-        auto it = foodItems.find(itemName);
-        if (it != foodItems.end()) {
-            return it->second;
-        }
-        return 0.0; // Mengembalikan 0 jika item tidak ditemukan
-    }
+    string nama;
+    double harga;
+    ItemMakanan(string n, double h) : nama(n), harga(h) {}
 };
 
-// Kelas Kasir untuk mengelola pesanan dan pembayaran
-class Kasir {
+class Restaurant {
 private:
-    Menu& menu;
-    map<string, int> orders;
-    double totalAmount;
+    vector<ItemMakanan> menu;
 
 public:
-    Kasir(Menu& m) : menu(m), totalAmount(0.0) {}
-
-    // Menambahkan pesanan ke daftar
-    void addOrder(const string& itemName, int quantity) {
-        double price = menu.getPrice(itemName);
-        if (price > 0) {
-            orders[itemName] += quantity;
-            totalAmount += price * quantity;
-        } else {
-            cout << "Item " << itemName << " tidak ditemukan dalam menu.\n";
-        }
+    Restaurant() {
+        menu.push_back(ItemMakanan("Nasi Goreng", 13000));
+        menu.push_back(ItemMakanan("Mie Goreng", 13000));
+        menu.push_back(ItemMakanan("Ayam Penyet", 13000));
+        menu.push_back(ItemMakanan("Ayam Geprek", 10000));
+        menu.push_back(ItemMakanan("Es Teh", 3000));
+        menu.push_back(ItemMakanan("Es Jeruk", 6000 ));
+        menu.push_back(ItemMakanan("Nutrisari", 5000 ));
     }
 
-    // Menampilkan pesanan yang telah dilakukan
-    void displayOrder() const {
-        cout << "Pesanan Anda:\n";
-        for (const auto& order : orders) {
-            double price = menu.getPrice(order.first);
-            cout << order.first << " x " << order.second << " - Rp " << price * order.second << endl;
+    void displayMenu() {
+        cout << "=== Menu Makanan ===" << endl;
+        for (int i = 0; i < menu.size(); i++) {
+            cout << i + 1 << ". " << menu[i].nama << " - Rp " << menu[i].harga << endl;
         }
-        cout << "Total yang harus dibayar: Rp " << totalAmount << endl;
+        cout << "====================" << endl;
     }
 
-    // Menghitung uang kembalian
-    void processPayment(double payment) {
-        if (payment >= totalAmount) {
-            double change = payment - totalAmount;
-            cout << "Jumlah uang kembalian: Rp " << change << endl;
-        } else {
-            cout << "Jumlah uang tidak cukup! Total yang harus dibayar adalah Rp " << totalAmount << endl;
+    double hitungTotal(const vector<int>& orders, const vector<int>& quantities) {
+        double total = 0;
+        for (size_t i = 0; i < orders.size(); i++) {
+            total += menu[orders[i]].harga * quantities[i];
         }
+        return total;
     }
 };
 
 int main() {
-    // Membuat objek menu dan menambahkan beberapa item
-    Menu menu;
-    menu.addItem("Nasi Goreng", 15000);
-    menu.addItem("Mie Ayam", 12000);
-    menu.addItem("Sate", 20000);
+    Restaurant restaurant;
+    vector<int> orders;
+    vector<int> quantities;
 
-    // Menampilkan menu makanan
-    menu.displayMenu();
+    int choice, quantity;
+    char more;
 
-    // Membuat objek kasir dengan referensi ke objek menu
-    Kasir kasir(menu);
+    restaurant.displayMenu();
 
-    // Input data dari pengguna
-    string item;
-    int quantity;
-    cout << "\nMasukkan pesanan Anda:\n";
-    while (true) {
-        cout << "Nama makanan (ketik 'selesai' untuk mengakhiri): ";
-        cin >> item;
-        if (item == "selesai") break;
-
+    do {
+        cout << "Pilih makanan (masukkan nomor): ";
+        cin >> choice;
         cout << "Jumlah: ";
         cin >> quantity;
-        kasir.addOrder(item, quantity);
+
+        // Menyimpan pesanan
+        orders.push_back(choice - 1);
+        quantities.push_back(quantity);
+
+        cout << "Apakah ada pesanan lain? (y/n): ";
+        cin >> more;
+    } while (more == 'y' || more == 'Y');
+
+    // Menghitung total
+    double total = restaurant.hitungTotal(orders, quantities);
+    cout << fixed << setprecision(2);
+    cout << "Total yang harus dibayar: Rp " << total << endl;
+
+    double bayar;
+    cout << "Masukkan jumlah uang pembayaran: Rp ";
+    cin >> bayar;
+
+    if (bayar >= total) {
+        double kembalian = bayar - total;
+        cout << "Jumlah uang kembalian: Rp " << kembalian << endl;
+    } else {
+        cout << "Uang pembayaran tidak cukup!" << endl;
     }
-
-    // Menampilkan pesanan dan total
-    kasir.displayOrder();
-
-    // Input pembayaran
-    double payment;
-    cout << "Masukkan jumlah uang yang dibayar: Rp ";
-    cin >> payment;
-    kasir.processPayment(payment);
 
     return 0;
 }
