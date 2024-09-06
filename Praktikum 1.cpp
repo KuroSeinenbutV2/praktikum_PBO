@@ -2,17 +2,19 @@
 #include <string>
 using namespace std;
 
-class Karyawan { //Declare Class
-private: //Declare Attribute
+enum Jabatan { TEKNISI = 1, RND = 2, KADIV = 3 };
+
+class Karyawan { // Declare Class
+private: // Declare Attribute
     string nama;
-    string jabatan;
+    Jabatan jabatan;
     int lembur;
     int dinas;
     int presensi;
     int gajiPokok;
 
-public: //Declare Attribute
-    Karyawan(string nama, string jabatan, int lembur, int dinas, int presensi) //Constructor
+public: // Declare Attribute
+    Karyawan(string nama, Jabatan jabatan, int lembur, int dinas, int presensi) // Constructor
     {
         this->nama = nama;
         this->jabatan = jabatan;
@@ -20,18 +22,20 @@ public: //Declare Attribute
         this->dinas = dinas;
         this->presensi = presensi;
 
-        if (jabatan == "teknisi") gajiPokok = 1800000;
-        else if (jabatan == "rnd") gajiPokok = 2300000;
-        else if (jabatan == "kadiv") gajiPokok = 2700000;
-        else gajiPokok = 0;
+        switch (jabatan) {
+            case TEKNISI: gajiPokok = 1800000; break;
+            case RND: gajiPokok = 2300000; break;
+            case KADIV: gajiPokok = 2700000; break;
+            default: gajiPokok = 0; break;
+        }
     }
 
-    int HitungGaji() { //Declare Method to calculate salary
+    int HitungGaji() { // Declare Method to calculate salary
         return gajiPokok + (lembur * 20000) + (dinas * 400000) + (presensi * 50000);
     }
 
-    void InfoKaryawan() { //Declare Method to display employees information
-    	cout << endl;
+    void InfoKaryawan() { // Declare Method to display employees information
+        cout << endl;
         cout << "-----------------------------------" << endl;
         cout << "Nama karyawan: " << nama << endl;
         cout << "Jumlah presensi dalam satu bulan: " << presensi << endl;
@@ -41,14 +45,23 @@ public: //Declare Attribute
     }
 };
 
-int main() { //Main Function
-    string nama, jabatan;
-    int lembur, dinas, presensi;
+int main() { // Main Function
+    string nama;
+    int jabatanInput, lembur, dinas, presensi;
+    Jabatan jabatan;
 
     cout << "Masukkan Nama Karyawan: ";
     getline(cin, nama);
-    cout << "Masukkan Jabatan (teknisi / rnd / kadiv): ";
-    getline(cin, jabatan);
+
+    cout << "Pilih Jabatan (1. Teknis / 2. RND / 3. Kadiv): ";
+    cin >> jabatanInput;
+    switch (jabatanInput) {
+        case TEKNISI: jabatan = TEKNISI; break;
+        case RND: jabatan = RND; break;
+        case KADIV: jabatan = KADIV; break;
+        default: jabatan = TEKNISI; // Default to Teknis if invalid input
+    }
+
     cout << "Masukkan Jumlah Jam Lembur: ";
     cin >> lembur;
     cout << "Masukkan Jumlah Dinas Luar: ";
@@ -56,8 +69,8 @@ int main() { //Main Function
     cout << "Masukkan Jumlah Presensi: ";
     cin >> presensi;
 
-    Karyawan karyawan(nama, jabatan, lembur, dinas, presensi);  //Make new employees object with data that inputed before
-    karyawan.InfoKaryawan(); //Display the new employees object data
+    Karyawan karyawan(nama, jabatan, lembur, dinas, presensi); // Make new employees object with data that inputed before
+    karyawan.InfoKaryawan(); // Display the new employees object data
 
     return 0;
 }
